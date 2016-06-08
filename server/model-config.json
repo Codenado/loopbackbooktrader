@@ -31,5 +31,13 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "member": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "book": {
+    "dataSource": "mongo",
+    "public": true
   }
 }
