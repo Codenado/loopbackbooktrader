@@ -6,14 +6,14 @@ angular
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
       $urlRouterProvider) {
     $stateProvider
-      .state('add-tack', {
+      .state('add-book', {
         url: '/add-book',
         templateUrl: 'views/book-form.html',
         controller: 'AddBookController',
         authenticate: true
       })
-      .state('all-tacks', {
-        url: '/all-tacks',
+      .state('all-books', {
+        url: '/all-books',
         templateUrl: 'views/all-books.html',
         controller: 'AllBooksController'
       })

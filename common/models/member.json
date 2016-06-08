@@ -8,6 +8,7 @@
   "properties": {
     "username": {
       "type": "string",
+      "id": true,
       "required": true
     },
     "about": {

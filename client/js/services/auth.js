@@ -1,6 +1,6 @@
 angular
   .module('app')
-  .factory('AuthService', ['Tacker', '$q', '$rootScope', function(User, $q,
+  .factory('AuthService', ['Member', '$q', '$rootScope', function(User, $q,
       $rootScope) {
     function login(email, password) {
       return User
