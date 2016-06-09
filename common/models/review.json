@@ -1,33 +1,33 @@
 {
-  "name": "book",
+  "name": "review",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "title": {
-      "type": "string",
-      "id": true,
+    "date": {
+      "type": "date",
       "required": true
     },
-    "description": {
-      "type": "string"
+    "rating": {
+      "type": "number",
+      "required": true
     },
-    "pages": {
-      "type": "number"
+    "comments": {
+      "type": "string"
     }
   },
   "validations": [],
   "relations": {
-    "owner": {
+    "book": {
       "type": "belongsTo",
-      "model": "member",
+      "model": "book",
       "foreignKey": ""
     },
-    "reviews": {
-      "type": "hasMany",
-      "model": "review",
+    "member": {
+      "type": "belongsTo",
+      "model": "member",
       "foreignKey": ""
     }
   },

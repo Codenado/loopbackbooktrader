@@ -1,0 +1,76 @@
+<div class="jumbotron">
+
+
+    <h1>{{book.title}}</h1>
+    <p>{{book.description}}</p>
+    <p>
+        <button ng-show="currentUser" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#trade" ng-click="getMyBooks()">
+            Trade
+        </button>
+        <button type="button" ng-show="currentUser" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#review">
+            Review
+        </button>
+    </p>
+</div>
+
+<div class="list-group">
+    <a ng-href="#/u/{{review.memberId}}" class="list-group-item" ng-repeat='review in book.reviews'>
+        <h4 class="list-group-item-heading">Review by {{review.memberId}} on {{review.date | date}}</h4>
+        <p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{review.rating * 10}}%;"> {{review.rating}}/10
+                </div>
+            </div>
+        </p>
+    </a>
+</div>
+
+<div class="modal fade" id="trade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="review" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Review</h4>
+            </div>
+            <div class="modal-body">
+                <form name="form" ng-submit="register()">
+                    <div class="form-group">
+                        <label for="repeatSelect"> Rating: </label>
+                        <select name="rating" ng-model="review.rating">
+                            <option ng-repeat="a in range(10) track by $index" value="{{$index + 1}}">{{$index + 1}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Comments</label>
+                        <textarea type="text" ng-model="review.comments" class="form-control"></textarea>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="addReview()" data-dismiss="modal">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

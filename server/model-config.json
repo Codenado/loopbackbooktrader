@@ -39,5 +39,9 @@
   "book": {
     "dataSource": "mongo",
     "public": true
+  },
+  "review": {
+    "dataSource": "mongo",
+    "public": true
   }
 }

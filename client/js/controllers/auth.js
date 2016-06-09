@@ -7,8 +7,8 @@ angular
 
     $scope.login = function() {
       AuthService.login($scope.user.email, $scope.user.password)
-      .then(function(review) {
-        console.log(review)
+      .then(function() {
+       
         $state.go('all-books');
       });
     };
