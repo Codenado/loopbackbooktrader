@@ -16,7 +16,21 @@
     }
   },
   "validations": [],
-  "relations": {},
-  "acls": [],
+  "relations": {
+    "books": {
+      "type": "hasMany",
+      "model": "book",
+      "foreignKey": "ownerId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "getProfile"
+    }
+  ],
   "methods": {}
 }

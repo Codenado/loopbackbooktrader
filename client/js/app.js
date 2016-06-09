@@ -17,6 +17,16 @@ angular
         templateUrl: 'views/all-books.html',
         controller: 'AllBooksController'
       })
+        .state('book', {
+        url: '/book/:title',
+        templateUrl: 'views/book.html',
+        controller: 'BookController'
+      })
+     .state('search', {
+        url: '/search?q',
+        templateUrl: 'views/search.html',
+        controller: 'SearchController'
+      })
       .state('forbidden', {
         url: '/forbidden',
         templateUrl: 'views/forbidden.html',
@@ -30,7 +40,7 @@ angular
         url: '/logout',
         controller: 'AuthLogoutController'
       })
-      .state('tacker', {
+      .state('member', {
         url: '/u/:id',
         templateUrl: 'views/member.html',
         controller: 'MemberController'
