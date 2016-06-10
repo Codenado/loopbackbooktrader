@@ -1,8 +1,9 @@
 angular
     .module('app')
-    .controller('AllBooksController', ['$scope', 'Book', function ($scope
-        , Book) {
+    .controller('AllBooksController', ['$scope', 'Book', 'Member', function ($scope
+        , Book, Member) {
         $scope.books = Book.find();
+
     }])
     .controller('SearchController', ['$scope', 'Book', '$stateParams', function ($scope
         , Book, $stateParams) {
