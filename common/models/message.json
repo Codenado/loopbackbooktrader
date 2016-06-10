@@ -1,0 +1,38 @@
+{
+  "name": "message",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "text": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "sender": {
+      "type": "belongsTo",
+      "model": "member",
+      "foreignKey": ""
+    },
+    "senderBook": {
+      "type": "belongsTo",
+      "model": "book",
+      "foreignKey": ""
+    },
+    "recipientBook": {
+      "type": "belongsTo",
+      "model": "book",
+      "foreignKey": ""
+    },
+    "recipient": {
+      "type": "belongsTo",
+      "model": "member",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

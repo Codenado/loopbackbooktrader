@@ -21,6 +21,16 @@
       "type": "hasMany",
       "model": "book",
       "foreignKey": "ownerId"
+    },
+    "sentMessages": {
+      "type": "hasMany",
+      "model": "message",
+      "foreignKey": ""
+    },
+    "recipient": {
+      "type": "belongsTo",
+      "model": "member",
+      "foreignKey": ""
     }
   },
   "acls": [

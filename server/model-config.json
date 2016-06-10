@@ -43,5 +43,9 @@
   "review": {
     "dataSource": "mongo",
     "public": true
+  },
+  "message": {
+    "dataSource": "mongo",
+    "public": true
   }
 }

@@ -2,14 +2,8 @@ angular
     .module('app')
     .controller('AllBooksController', ['$scope', 'Book', function ($scope
         , Book) {
-        $scope.books = Book.find(filter: {
-            where: {
-                title: $stateParams.title
-            }
-            , include: ['owner', 'reviews']
-        });
-
-  }])
+        $scope.books = Book.find();
+    }])
     .controller('SearchController', ['$scope', 'Book', '$stateParams', function ($scope
         , Book, $stateParams) {
         $scope.books = Book.find({
@@ -19,11 +13,10 @@ angular
                         "regexp": $stateParams.q
                     }
                 }
-                , include: ['owner', 'reviews']
             }
         });
 
-  }])
+            }])
     .controller('AddBookController', ['$scope', 'Book', '$state', function ($scope, Book, $state) {
         $scope.action = 'Add';
 
@@ -44,9 +37,9 @@ angular
                     $state.go('all-books');
                 });
         };
-  }])
-    .controller('BookController', ['$scope', 'Book', '$stateParams', '$http', '$rootScope', 'Review', function ($scope
-        , Book, $stateParams, $http, $rootScope, Review) {
+      }])
+    .controller('BookController', ['$scope', 'Book', '$stateParams', '$http', '$rootScope', 'Review', 'Message', function ($scope
+        , Book, $stateParams, $http, $rootScope, Review, Message) {
         $scope.range = function (n) {
             return new Array(n);
         };
@@ -67,20 +60,29 @@ angular
             $scope.review = {}
         }
 
-
-
         function getBook() {
             $scope.book = Book.findOne({
                 filter: {
                     where: {
-                        title: $stateParams.title
+                        title: 'something'
                     }
-                    , include: ['owner', 'reviews']
+                    , include: 'reviews'
                 }
+
             });
         }
 
-  }])
+        $scope.sendMessage = function () {
+            Message.create({
+                text: $scope.message.text
+                , recpientId: $scope.book.ownerId
+                , senderBookId: $scope.message.senderBook
+                , recpientBookId: $scope.book.title
+
+            })
+            $scope.message = {}
+        }
+    }])
 
 
 .controller('MemberController', ['$scope', 'Member', '$rootScope', '$stateParams', '$http', function ($scope, Member, $rootScope, $stateParams, $http) {
