@@ -65,7 +65,7 @@ angular
             $scope.book = Book.findOne({
                 filter: {
                     where: {
-                        title: 'something'
+                        title: $stateParams.title
                     }
                     , include: 'reviews'
                 }
