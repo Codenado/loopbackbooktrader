@@ -7,7 +7,13 @@ angular
             })
             return number / book.reviews.length * 10;
         }
-    })
+    }).filter("inbox", ['$rootScope', function ($rootScope) {
+        return function () {
+            if ($rootScope.currentUser) {
+                return $rootScope.currentUser.recieved.length
+            }
+        }
+    }])
     .controller('AllBooksController', ['$scope', 'Book', 'Member', function ($scope
         , Book, Member) {
         $scope.books = Book.find({
@@ -87,9 +93,9 @@ angular
         $scope.sendMessage = function () {
             Message.create({
                 text: $scope.message.text
-                , recpientId: $scope.book.ownerId
+                , recipientId: $scope.book.ownerId
                 , senderBookId: $scope.message.senderBook
-                , recpientBookId: $scope.book.title
+                , recipientBookId: $scope.book.title
 
             })
             $scope.message = {}

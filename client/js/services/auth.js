@@ -11,6 +11,7 @@ angular
                 .$promise
                 .then(function (response) {
                     $rootScope.currentUser = {
+
                         id: response.user.username
                         , tokenId: response.id
                         , recieved: getEmail(response.user.username)
@@ -39,6 +40,7 @@ angular
         }
 
         function getEmail(username) {
+
             return Message.find({
                 filter: {
                     where: {

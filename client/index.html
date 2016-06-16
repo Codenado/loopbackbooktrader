@@ -8,6 +8,7 @@
 </head>
 
 <body>
+    Hello {{currentUser.username}}
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -48,7 +49,7 @@
                         <a ui-sref="logout" ui-sref-active="active">Log out</a>
                     </li>
                     <li ng-show="currentUser">
-                        <a ng-href="#/u/{{currentUser.id}}/messages">Inbox <span class="badge">{{currentUser.recived.length}}</span></a>
+                        <a ng-href="#/u/{{currentUser.id}}/messages">Inbox <span class="badge">{{currentUser | inbox }}</span></a>
 
                     </li>
 
