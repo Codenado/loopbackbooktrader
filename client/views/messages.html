@@ -1,1 +1,21 @@
-dgdfkjnvkjvdkjvdkhvbdfhjvbd
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <td>{{message.senderBookId}}</td>
+        <td>{{message.recpientBookId}}</td>
+        <td>{{message.senderId}}</td>
+    </div>
+
+    <!-- Table -->
+    <table class="table">
+        <tr ng-repeat='message in messages' role="button" data-toggle="collapse" href="#{{message.id}}" aria-expanded="false" aria-controls="collapseExample">
+            <td>{{message.senderBookId}}</td>
+            <td>{{message.recpientBookId}}</td>
+            <td>{{message.senderId}}</td>
+            <div class="collapse" id="{{message.id}}">
+                <div class="well">
+                    {{message.id}}
+                </div>
+        </tr>
+    </table>
+    </div>

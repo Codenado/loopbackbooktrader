@@ -2,11 +2,10 @@ angular
     .module('app')
     .controller('MessagesController', ['$scope', 'Message', '$rootScope', function ($scope
         , Message, $rootScope) {
-        $scope.sent = getSent()
-        $scope.recived = getRecived()
+        $scope.messages = getSent()
 
-        console.log($scope.recived)
-        console.log($scope.sent)
+
+        console.log($scope.messages)
 
         function getSent() {
             return Message.find({

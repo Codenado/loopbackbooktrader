@@ -1,9 +1,20 @@
 angular
-    .module('app')
+    .module('app').filter("averageReview", function () {
+        return function (book) {
+            var number = 0
+            $.each(book.reviews, function (i, review) {
+                number += review.rating
+            })
+            return number / book.reviews.length * 10;
+        }
+    })
     .controller('AllBooksController', ['$scope', 'Book', 'Member', function ($scope
         , Book, Member) {
-        $scope.books = Book.find();
-
+        $scope.books = Book.find({
+            filter: {
+                include: 'reviews'
+            }
+        })
     }])
     .controller('SearchController', ['$scope', 'Book', '$stateParams', function ($scope
         , Book, $stateParams) {
@@ -84,13 +95,11 @@ angular
             $scope.message = {}
         }
     }])
-
-
-.controller('MemberController', ['$scope', 'Member', '$rootScope', '$stateParams', '$http', function ($scope, Member, $rootScope, $stateParams, $http) {
-    console.log($stateParams.id)
-    $http.get("/api/members/getProfile?username=" + $stateParams.id)
-        .then(function (response) {
-            $scope.member = response.data.profile;
-        })
+    .controller('MemberController', ['$scope', 'Member', '$rootScope', '$stateParams', '$http', function ($scope, Member, $rootScope, $stateParams, $http) {
+        console.log($rootScope.recivied)
+        $http.get("/api/members/getProfile?username=" + $stateParams.id)
+            .then(function (response) {
+                $scope.member = response.data.profile;
+            })
 
   }]);

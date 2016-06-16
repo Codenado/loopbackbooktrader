@@ -10,11 +10,10 @@ angular
                 })
                 .$promise
                 .then(function (response) {
-                    getEmail()
                     $rootScope.currentUser = {
                         id: response.user.username
                         , tokenId: response.id
-                        , recieved: getEmail()
+                        , recieved: getEmail(response.user.username)
                     };
                 });
         }
