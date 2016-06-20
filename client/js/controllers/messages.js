@@ -4,9 +4,6 @@ angular
         , Message, $rootScope) {
         $scope.messages = getSent()
 
-
-        console.log($scope.messages)
-
         function getSent() {
             return Message.find({
                 filter: {
@@ -27,3 +24,14 @@ angular
             })
         }
     }])
+    .controller('DeleteMessageController', ['$scope', 'Message', '$state', '$stateParams'
+                                            , function ($scope, Message, $state, $stateParams) {
+            Message
+                .deleteById({
+                    id: $stateParams.id
+                })
+                .$promise
+                .then(function () {
+                    $state.go('messages');
+                });
+  }])

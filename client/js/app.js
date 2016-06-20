@@ -53,6 +53,11 @@ angular
                 url: '/sign-up/success'
                 , templateUrl: 'views/sign-up-success.html'
             })
+            .state('delete-message', {
+                url: '/delete-message/:id'
+                , controller: 'DeleteMessageController'
+                , authenticate: true
+            })
             .state('messages', {
                 url: '/u/:id/messages'
                 , templateUrl: 'views/messages.html'
