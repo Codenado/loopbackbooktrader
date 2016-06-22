@@ -1,8 +1,8 @@
 angular
     .module('app')
-    .controller('MessagesController', ['$scope', 'Message', '$rootScope', function ($scope
-        , Message, $rootScope) {
-        $scope.messages = getSent()
+    .controller('MessagesController', ['$scope', 'Message', '$rootScope', '$http', function ($scope
+        , Message, $rootScope, $http) {
+        $scope.messages = getRecived()
 
         function getSent() {
             return Message.find({
@@ -23,9 +23,23 @@ angular
                 }
             })
         }
+
+        $scope.trade = function (message) {
+            console.log(message)
+            $http.post('/api/messages/trade', {
+                message: message.id
+            })
+        }
     }])
     .controller('DeleteMessageController', ['$scope', 'Message', '$state', '$stateParams'
-                                            , function ($scope, Message, $state, $stateParams) {
+
+
+
+
+
+
+        
+        , function ($scope, Message, $state, $stateParams) {
             Message
                 .deleteById({
                     id: $stateParams.id

@@ -4,39 +4,39 @@ module.exports = function (Message) {
         next();
     });
 
-    Message.beforeRemote('trade', function (context, user, next) {
-        console.log('hello')
-        next();
-    });
+    //    Message.beforeRemote('trade', function (context, user, next) {
+    //        next();
+    //    });
 
     Message.trade = function (message, cb) {
         Message.findOne({
                 where: {
-                    id: "575eef0ff572e5f00103f38d"
+                    id: message
                 }
-                , include: {
-                    relation: 'senderBook', // include the owner object
-                    scope: { // further filter the owner object
-                        fields: ['title', 'pages', 'ownerId'] // only show two fields
-                    }
-                }
+                , include: ['senderBook', 'recipientBook']
+
+                //                , include: {
+                //                    relation: ['senderBook', 'recientBook'], // include the owner object
+                //                    scope: { // further filter the owner object
+                //                        fields: ['title', 'pages', 'ownerId'] // only show two fields
+                //                    },
+
+
             }
             , function (e, message) {
-                message.senderBook.title = 'tiger'
-                    //                books[0].ownerId = 'george'
-                    //                books[0].save()
+                console.log(message)
                 message.senderBook.update({
-                    ownerId: "tiger"
+                    ownerId: message.recipientId
                 })
-                response = message
+                message.recipientBook.update({
+                    ownerId: message.senderId
+                })
+                response = 'trade complete'
                 cb(null, response)
-
+                message.delete()
             })
 
-
     }
-
-
 
     Message.remoteMethod(
         'trade', {
@@ -46,8 +46,7 @@ module.exports = function (Message) {
             }
             , accepts: {
                 arg: 'message'
-                , type: 'object'
-
+                , type: 'string'
             }
             , returns: {
                 arg: 'profile'
