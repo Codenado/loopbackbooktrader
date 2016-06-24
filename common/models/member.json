@@ -1,46 +1,46 @@
 {
-    "name": "member"
-    , "base": "User"
-    , "idInjection": true
-    , "options": {
-        "validateUpsert": true
+  "name": "member",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "username": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "about": {
+      "type": "string"
     }
-    , "properties": {
-        "username": {
-            "type": "string"
-            , "id": true
-            , "required": true
-        }
-        , "about": {
-    "type": "string"
-}
+  },
+  "validations": [],
+  "relations": {
+    "books": {
+      "type": "hasMany",
+      "model": "book",
+      "foreignKey": "ownerId"
+    },
+    "recieved": {
+      "type": "hasMany",
+      "model": "message",
+      "foreignKey": "recipientId"
+    },
+    "sent": {
+      "type": "hasMany",
+      "model": "message",
+      "foreignKey": "senderId"
     }
-    , "validations": []
-    , "relations": {
-        "books": {
-            "type": "hasMany"
-            , "model": "book"
-            , "foreignKey": "ownerId"
-        }
-        , "recieved": {
-            "type": "hasMany"
-            , "model": "message"
-            , "foreignKey": "recipientId"
-        }
-        , "sent": {
-            "type": "hasMany"
-            , "model": "message"
-            , "foreignKey": "senderId"
-        }
+  },
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "getProfile"
     }
-    , "acls": [
-        {
-            "accessType": "EXECUTE"
-            , "principalType": "ROLE"
-            , "principalId": "$everyone"
-            , "permission": "ALLOW"
-            , "property": "getProfile"
-    }
-  ]
-    , "methods": {}
+  ],
+  "methods": {}
 }
