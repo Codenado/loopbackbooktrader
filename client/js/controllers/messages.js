@@ -29,9 +29,11 @@ angular
             $http.post('/api/messages/trade', {
                 message: message.id
             })
+            $scope.messages = getRecived()
         }
     }])
     .controller('DeleteMessageController', ['$scope', 'Message', '$state', '$stateParams'
+
 
 
 

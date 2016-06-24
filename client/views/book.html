@@ -16,12 +16,12 @@
 <div class="list-group">
     <a ng-href="#/u/{{review.memberId}}" class="list-group-item" ng-repeat='review in book.reviews'>
         <h4 class="list-group-item-heading">Review by {{review.memberId}} on {{review.date | date}}</h4>
-        <p>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{review.rating * 10}}%;"> {{review.rating}}/10
-                </div>
+        <div class="well well-lg">{{review.comments}}</div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{review.rating * 10}}%;"> {{review.rating}}/10
             </div>
-        </p>
+        </div>
+
     </a>
 </div>
 

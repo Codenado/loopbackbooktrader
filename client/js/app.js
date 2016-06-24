@@ -62,6 +62,7 @@ angular
                 url: '/u/:id/messages'
                 , templateUrl: 'views/messages.html'
                 , controller: 'MessagesController'
+                , authenticate: true
             });
         $urlRouterProvider.otherwise('all-books');
   }])

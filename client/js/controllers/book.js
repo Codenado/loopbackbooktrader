@@ -31,6 +31,7 @@ angular
                         "regexp": $stateParams.q
                     }
                 }
+                , include: 'reviews'
             }
         });
 
